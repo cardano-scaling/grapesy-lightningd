@@ -4,9 +4,9 @@
     let
 
       overlay = final: _prev: {
-        grapesy-lightningd = final.callCabal2nix "grapesy-lightningd" (lib.cleanSource "${self}/grapesy-lightningd") { };
-        grapesy-lightningd-testing = final.callCabal2nix "grapesy-lightningd-testing" (lib.cleanSource "${self}/grapesy-lightningd-testing") { };
-        proto-lens-lightningd = addSetupDepends [ pkgs.protobuf ] (final.callCabal2nix "proto-lens-lightningd" (lib.cleanSource "${self}/proto-lens-lightningd") { });
+        grapesy-lightningd = final.callPackage (lib.cleanSource "${self}/grapesy-lightningd") { };
+        grapesy-lightningd-testing = final.callPackage (lib.cleanSource "${self}/grapesy-lightningd-testing") { };
+        proto-lens-lightningd = addSetupDepends [ pkgs.protobuf ] (final.callPackage (lib.cleanSource "${self}/proto-lens-lightningd") { });
       };
 
       legacyPackages = inputs.horizon-advance.legacyPackages.${system}.extend overlay;

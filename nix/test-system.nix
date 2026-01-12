@@ -11,7 +11,7 @@
         nodes = {
           alice = {
             networking.hostName = "alice";
-            environment.systemPackages = [ pkgs.clightning pkgs.bitcoin];
+            environment.systemPackages = [ pkgs.clightning pkgs.bitcoin ];
             networking.firewall.enable = false;
             virtualisation = {
               cores = 2;
